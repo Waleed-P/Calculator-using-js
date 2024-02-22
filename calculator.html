@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .calculator {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .display {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 12px;
+      font-size: 1.5em;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    button {
+      border: none;
+      outline: none;
+      font-size: 1.2em;
+      padding: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button.operator {
+      background-color: #f0ad4e;
+      color: #fff;
+    }
+
+    button.double {
+      grid-column: span 2;
+    }
+
+    button.equals {
+      background-color: #5bc0de;
+      color: #fff;
+    }
+
+    button:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+      <input class="display" id="display" type="text">
+    <div class="buttons">
+      <button onclick="displaycontent('7')">7</button>
+      <button onclick="displaycontent('7')">8</button>
+      <button onclick="displaycontent('9')">9</button>
+      <button onclick="displaycontent('/')" class="operator">/</button>
+      <button onclick="displaycontent('4')">4</button>
+      <button onclick="displaycontent('5')">5</button>
+      <button onclick="displaycontent('6')">6</button>
+      <button onclick="displaycontent('*')" class="operator">*</button>
+      <button onclick="displaycontent('1')">1</button>
+      <button onclick="displaycontent('2')">2</button>
+      <button onclick="displaycontent('3')">3</button>
+      <button onclick="displaycontent('-')" class="operator">-</button>
+      <button onclick="displaycontent('0')" class="double">0</button>
+      <button onclick="displaycontent('.')">.</button>
+      <button onclick=clearscreen()>AC</button>
+      <button onclick="out()" class="equals operator double">=</button>
+      <button onclick="displaycontent('+')" class="operator">+</button>
+      <button onclick="sl()" class="operator">delete</button>
+    </div>
+  </div>
+</body>
+<script>
+  const displaycontent =(content)=>{
+    display.value += content
+  }
+  const clearscreen =()=>{
+    display.value=''
+  }
+  const out =()=>{
+    try{
+      display.value=eval(display.value)
+    }
+    catch{
+      display.value='Error'
+    }
+  }
+  const sl=()=>{
+    display.value=display.value.slice(0,-1)
+  }
+</script>
+</html>
